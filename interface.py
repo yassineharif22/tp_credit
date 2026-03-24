@@ -73,7 +73,7 @@ if st.button("🔍 Soumettre ma demande", type="primary", use_container_width=Tr
             reponse = requests.post(
                 "https://tpcredit-production.up.railway.app/predire",
                 json=demande,
-                timeout=10
+                timeout=30
             )
         # Traitement de la réponse
         if reponse.status_code == 200:
