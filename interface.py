@@ -71,7 +71,7 @@ if st.button("🔍 Soumettre ma demande", type="primary", use_container_width=Tr
     try:
         with st.spinner("Analyse en cours par le modèle IA..."):
             reponse = requests.post(
-                "http://127.0.0.1:5000/predire",
+                "https://tpcredit-production.up.railway.app/predire",
                 json=demande,
                 timeout=10
             )
