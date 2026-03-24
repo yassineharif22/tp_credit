@@ -1,0 +1,230 @@
+📱 GUIDE D'EXÉCUTION - API CRÉDIT + STREAMLIT
+
+================================================
+🚀 CONFIGURATION COMPLÈTE
+================================================
+
+✅ Flask API : EN COURS D'EXÉCUTION
+   - URL : http://127.0.0.1:5000/
+   - Status : ✅ Prêt
+   - Terminal ID : 3019ae21-9e6d-488e-8b9b-a4646c243b4e
+
+⚠️  Streamlit Interface : À démarrer manuellement
+   - URL : http://localhost:8501/
+   - Fichier : interface.py
+   - Raison : Permissions Windows
+
+
+================================================
+📋 MÉTHODE 1 (Recommandée) - DeuxTerminaux Séparés
+================================================
+
+**TERMINAL 1 - Flask API (Déjà en cours d'exécution) ✅**
+
+   cd c:\Users\PC\Desktop\tp_credit
+   python app.py
+
+   ➜ Vous verrez :
+   * Running on http://127.0.0.1:5000
+
+**TERMINAL 2 - Interface Streamlit**
+
+   1. Ouvrez un NOUVEAU terminal PowerShell
+   2. Exécutez :
+   
+      cd c:\Users\PC\Desktop\tp_credit
+      streamlit run interface.py
+   
+   3. Votre navigateur s'ouvrira automatiquement sur :
+      http://localhost:8501/
+   
+   4. Si pas d'ouverture automatique, allez à :
+      http://localhost:8501/
+
+
+================================================
+🌐 TESTER L'API VIA NAVIGATEUR
+================================================
+
+Pendant que Flask fonctionne, visitez :
+
+1. PAGE D'ACCUEIL
+   http://127.0.0.1:5000/
+
+2. EXEMPLES DE REQUÊTES
+   http://127.0.0.1:5000/demo
+
+3. STATISTIQUES DU DATASET
+   http://127.0.0.1:5000/statistiques
+
+4. HISTORIQUE DES PRÉDICTIONS
+   http://127.0.0.1:5000/historique
+
+
+================================================
+🧪 TESTER VIA LE SCRIPT PYTHON
+================================================
+
+Dans un terminal (Flask doit tourner) :
+
+   cd c:\Users\PC\Desktop\tp_credit
+   python tester_api.py
+
+Cela lance 7 tests automatiques :
+   ✅ Test d'accueil
+   ✅ Route démo
+   ✅ Prédiction cas 1 (Accord)
+   ✅ Prédiction cas 2 (Refus)
+   ✅ Validation d'erreur
+   ✅ Historique
+   ✅ Statistiques
+
+
+================================================
+🎨 STREAMLIT - PAGES DISPONIBLES
+================================================
+
+1. 🏠 Accueil
+   - Présentation du projet
+   - Vue d'ensemble des statistiques
+   - Informations système
+
+2. 📝 Demande de Crédit (PRINCIPALE)
+   - Formulaire interactif
+   - Validation des données en temps réel
+   - Décision immédiate
+   - Analyse détaillée du risque
+
+3. 📊 Statistiques
+   - Métriques du dataset
+   - Analyse des revenus
+   - Info du modèle
+   - Performance
+
+4. 📈 Historique
+   - 10 dernières prédictions
+   - Tableau de visualisation
+   - Statistiques des prédictions
+
+
+================================================
+💡 EXEMPLE D'UTILISATION STREAMLIT
+================================================
+
+1. Ouvrez http://localhost:8501/
+2. Allez à "📝 Demande de Crédit"
+3. Remplissez le formulaire :
+   - Âge : 38 ans
+   - Revenu : 18000 MAD
+   - Montant : 40000 MAD
+   - Durée : 24 mois
+   - Situation : Marié
+   - Emploi : Fonctionnaire
+4. Cliquez "SOUMETTRE LA DEMANDE"
+5. Recevez automatiquement : ✅ ACCORDÉ (99%)
+
+
+================================================
+⚙️  TROUBLESHOOTING
+================================================
+
+Si le port 8501 (Streamlit) est occupé :
+   streamlit run interface.py --server.port 8502
+
+Si le port 5000 (Flask) est occupé :
+   Modifiez la dernière ligne de app.py :
+   app.run(debug=True, port=5001)
+   
+   Puis adaptez dans interface.py :
+   API_BASE_URL = "http://127.0.0.1:5001"
+
+Si Streamlit refuse de démarrer :
+   pip install --upgrade streamlit
+   streamlit run interface.py --logger.level=error
+
+Fermer les deux services :
+   CTRL+C dans chaque terminal
+
+
+================================================
+📊 ARCHITECTURE
+================================================
+
+┌─────────────────────────────────────────┐
+│    STREAMLIT INTERFACE (Port 8501)      │
+│  - Formulaires interactifs              │
+│  - Visualisations                       │
+│  - Historique et statistiques            │
+└────────────┬────────────────────────────┘
+             │
+        HTTP Requests
+             │
+┌────────────▼────────────────────────────┐
+│      FLASK API (Port 5000)              │
+│  - Route POST /predire                  │
+│  - Route GET /statistiques              │
+│  - Route GET /historique                │
+│  - Validation des données               │
+└────────────┬────────────────────────────┘
+             │
+        Prédictions
+             │
+┌────────────▼────────────────────────────┐
+│    MODÈLE ML (RandomForest)             │
+│  - 100 arbres de décision               │
+│  - 7 features (âge, revenu, etc)        │
+│  - Accuracy: 100% on test set           │
+└─────────────────────────────────────────┘
+
+
+================================================
+📁 FICHIERS DU PROJET
+================================================
+
+app.py              ← Flask API (en cours)
+interface.py        ← Streamlit UI (à lancer)
+train_model.py      ← Script d'entraînement
+credit_dataset.csv  ← Données (300 demandes)
+model.pkl           ← Modèle sauvegardé ⭐
+tester_api.py       ← Tests automatiques
+README.md           ← Documentation
+QUICK_START.txt     ← Guide rapide
+
+
+================================================
+✨ PROCHAINES ÉTAPES
+================================================
+
+1. ✅ Flask API est en cours d'exécution
+2. ⏳ Démarrez Streamlit dans un nouveau terminal
+3. 🧪 Testez en remplissant des formulaires
+4. 📊 Consultez les statistiques
+5. 📈 Observez l'historique des prédictions
+
+
+================================================
+🎓 EXERCICES (À FAIRE APRÈS)
+================================================
+
+⭐   Exercice 1 : Validation avancée
+     (déjà implémentée dans app.py)
+
+⭐⭐  Exercice 2 : Nouvelle route /statistiques
+     (déjà implémentée dans app.py)
+
+⭐⭐  Exercice 3 : Historique des prédictions
+     (déjà implémentée dans app.py)
+
+⭐⭐⭐ Exercice 4 : Interface Streamlit avancée
+     (interface.py - déjà créée!)
+
+
+================================================
+🎉 BON DÉVELOPPEMENT !
+================================================
+
+Lancez Streamlit pour tester l'interface :
+
+   streamlit run interface.py
+
+À bientôt ! 🚀

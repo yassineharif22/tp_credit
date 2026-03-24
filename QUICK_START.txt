@@ -1,0 +1,135 @@
+📋 GUIDE DE DÉMARRAGE RAPIDE - API CRÉDIT
+
+================================================
+✅ ÉTAPES COMPLÉTÉES
+================================================
+
+✔️ 1. Structure du projet créée
+   Dossier : c:\Users\PC\Desktop\tp_credit\
+
+✔️ 2. Fichiers générés :
+   - credit_dataset.csv (300 demandes fictives)
+   - train_model.py (script d'entraînement)
+   - app.py (API Flask)
+   - tester_api.py (tests)
+   - model.pkl (modèle entraîné) ⭐
+   - README.md (documentation complète)
+
+✔️ 3. Dépendances installées :
+   - Flask
+   - scikit-learn
+   - pandas
+   - requests
+
+✔️ 4. Modèle entraîné avec succès 🎉
+   - Dataset : 178 demandes
+   - Accuracy : 100% sur test set!
+
+
+================================================
+🚀 POUR DÉMARRER L'API
+================================================
+
+TERMINAL 1 - Démarrer le serveur :
+  
+  cd c:\Users\PC\Desktop\tp_credit
+  python app.py
+
+  ➜ L'API sera accessible sur http://127.0.0.1:5000/
+
+
+TERMINAL 2 - Tester l'API (optionnel) :
+  
+  cd c:\Users\PC\Desktop\tp_credit
+  python tester_api.py
+
+  Cela lancera 7 tests complets avec exemples
+
+
+================================================
+📱 UTILISER L'API
+================================================
+
+1. BROWSER (Routes GET) :
+   - http://127.0.0.1:5000/
+   - http://127.0.0.1:5000/demo
+   - http://127.0.0.1:5000/statistiques
+
+2. PYTHON SCRIPT :
+   
+   import requests
+   
+   demande = {
+       "age": 38,
+       "revenu_mensuel": 18000,
+       "montant_credit_demande": 40000,
+       "duree_remboursement_mois": 24,
+       "nb_credits_anterieurs": 0,
+       "situation_familiale": "marie",
+       "type_emploi": "fonctionnaire"
+   }
+   
+   response = requests.post(
+       "http://127.0.0.1:5000/predire", 
+       json=demande
+   )
+   print(response.json())
+   # {'decision': 'ACCORDÉ ✅', 'confiance': '99.0%'}
+
+3. cURL :
+   
+   curl -X POST http://127.0.0.1:5000/predire \
+     -H "Content-Type: application/json" \
+     -d '{"age": 38, "revenu_mensuel": 18000, ...}'
+
+
+================================================
+🔧 ROUTES DISPONIBLES
+================================================
+
+GET  /                 → Message d'accueil
+GET  /demo             → Voir les exemples
+GET  /statistiques     → Stats du dataset
+GET  /historique       → Dernières prédictions
+POST /predire          → Faire une prédiction
+
+
+================================================
+❓ EN CAS DE PROBLÈME
+================================================
+
+Si model.pkl est manquant :
+  python train_model.py
+
+Si le port 5000 est déjà utilisé :
+  # Modifier dans app.py la dernière ligne :
+  app.run(debug=True, port=5001)
+
+Pour voir la documentation complète :
+  Ouvrez README.md
+
+
+================================================
+📚 STRUCTURE DU PIPELINE
+================================================
+
+Input (JSON) 
+    ↓
+Validation des données
+    ↓
+Transformation (StandardScaler + OneHotEncoder)
+    ↓
+RandomForest Classifier (100 trees)
+    ↓
+Prédiction + Confiance
+    ↓
+Réponse JSON
+
+
+================================================
+✨ C'EST PRÊT !
+================================================
+
+Démarrez avec : python app.py
+
+Bon développement ! 🚀
